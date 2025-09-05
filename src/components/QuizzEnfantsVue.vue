@@ -7,6 +7,9 @@ const plus = () => {
         return 
     }
     count.value++
+    if (count.value === 9) {
+        score();
+    }
 };
 const moins = () => {
     if (count.value === 9) {
@@ -21,6 +24,9 @@ const deuxiemePlus = () => {
         return 
     }
     deuxiemeCount.value++
+    if (deuxiemeCount.value === 4) {
+        score();
+    }
 };
 const deuxiemeMoins = () => {
     if (deuxiemeCount.value === 4) {
@@ -35,6 +41,9 @@ const troisiemePlus = () => {
         return 
     }
     troisiemeCount.value++
+    if (troisiemeCount.value === 9) {
+        score();
+    }
 };
 const troisiemeMoins = () => {
     if (troisiemeCount.value === 9) {
@@ -49,6 +58,9 @@ const quatriemePlus = () => {
         return 
     }
     quatriemeCount.value++
+    if (quatriemeCount.value === 3) {
+        score();
+    }
 };
 const quatriemeMoins = () => {
     if (quatriemeCount.value === 3) {
@@ -61,6 +73,7 @@ const reponseCultureg = ref("");
 const animaux = ref(["Chat", "Chien", "Poule"]);
 const reponseChat = () => {
     reponseCultureg.value = "Chat";
+    score();
 }
 const reponseChien = () => {
     reponseCultureg.value = "Chien";
@@ -74,6 +87,7 @@ const deuxiemeReponseCultureg = ref("");
 const deuxiemeTableauAnimaux = ref(["Papillon", "Abeille", "Moustique"]);
 const reponseAbeille = () => {
     deuxiemeReponseCultureg.value = "Abeille";
+    score();
 };
 const reponseMoustique = () => {
   deuxiemeReponseCultureg.value = "Moustique";
@@ -87,6 +101,7 @@ const troisiemeReponseCultureg = ref("");
 const troisiemeTableauBallon = ref(["Ballon de Foot", "Ballon de Basket", "Ballon de Rugby"]);
 const reponseRugby = () => {
     troisiemeReponseCultureg.value = "Ballon de Rugby";
+    score();
 };
 const reponseFoot = () => {
   troisiemeReponseCultureg.value = "Ballon de Foot";
@@ -100,6 +115,7 @@ const quatriemeReponseCultureg = ref("");
 const quatriemeTableauHalloween = ref(["Une Citrouille", "Une Carotte", "Une Pomme de terre"]);
 const reponseCitrouille = () => {
     quatriemeReponseCultureg.value = "Une Citrouille";
+    score();
 };
 const reponseCarotte = () => {
     quatriemeReponseCultureg.value = "Une Carotte";
@@ -113,6 +129,7 @@ const premiereReponseAnglais = ref("");
 const premierTableauAnglais = ref(["Dog","Turtle", "Horse"]);
 const reponseTurtle = () => {
     premiereReponseAnglais.value = "Turtle";
+    score();
 };
 const reponseDog = () => {
     premiereReponseAnglais.value = "Dog";
@@ -126,6 +143,7 @@ const deuxiemeReponseAnglais = ref("");
 const deuxiemeTableauAnglais = ref(["Manger","Au Revoir", "Bonjour"]);
 const reponseBonjour = () => {
     deuxiemeReponseAnglais.value = "Bonjour";
+    score();
 };
 const reponseAuRevoir = () => {
    deuxiemeReponseAnglais.value = "Au Revoir";
@@ -135,10 +153,16 @@ const reponseManger = () => {
    deuxiemeReponseAnglais.value = "Manger";
 };
 
+const scores = ref(0);
+const score = () => {
+    scores.value++
+}
+
 </script>
 
 <template>
 <h1>Quizz</h1>
+    <div class="premiereCategorie">Score : {{ scores }}</div>
     <div class="categories">
     <h2>Mathématiques :</h2>
         <p class="question">Combien font 4 + 5 ?</p>
@@ -224,6 +248,18 @@ const reponseManger = () => {
         font-family: cursive;
         font-weight: bold;
         color : #E86146;
+        text-align: center;
+    }
+    .premiereCategorie {
+        margin : 10px 370px 0 1000px;
+        font-family: cursive;
+        font-weight: bold;
+        color : #E0AA9F;
+        border : dashed #E0AA9F;
+        border-width: 3.5px;
+        border-radius : 15px;
+        height: 30px;
+        width: 100px;
         text-align: center;
     }
     .categories {
