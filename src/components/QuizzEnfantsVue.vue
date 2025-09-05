@@ -95,6 +95,19 @@ const reponseFoot = () => {
 const reponseBasket = () => {
    troisiemeReponseCultureg.value = "Ballon de Basket";
 };
+
+const quatriemeReponseCultureg = ref("");
+const quatriemeTableauHalloween = ref(["Une Citrouille", "Une Carotte", "Une Pomme de terre"]);
+const reponseCitrouille = () => {
+    quatriemeReponseCultureg.value = "Une Citrouille";
+};
+const reponseCarotte = () => {
+    quatriemeReponseCultureg.value = "Une Carotte";
+};
+
+const reponsePommeDeTerre = () => {
+   quatriemeReponseCultureg.value = "Une Pomme de terre";
+};
 </script>
 
 <template>
@@ -150,6 +163,14 @@ const reponseBasket = () => {
         <button @click="reponseFoot">Ballon de Foot</button>
         <button @click="reponseBasket">Ballon de Basket</button>
         <button @click="reponseRugby">Ballon de Rugby</button>
+
+        <p class="question">Quel légume est souvent associé à Halloween ?</p>
+        <p class="resultat" :style="{color : quatriemeReponseCultureg === quatriemeTableauHalloween[0] ? '#CC4949' : '#784040'}">Résultat : {{ quatriemeReponseCultureg }}</p>
+        <div v-show="quatriemeReponseCultureg === quatriemeTableauHalloween[0]">Bravo tu as réussi la question!🎉</div>
+        <div v-show="quatriemeReponseCultureg === quatriemeTableauHalloween[1] || quatriemeReponseCultureg === quatriemeTableauHalloween[2]">Mauvaise réponse😉</div>
+        <button @click="reponseCarotte">Une Carotte</button>
+        <button @click="reponseCitrouille">Une Citrouille</button>
+        <button @click="reponsePommeDeTerre">Une Pomme de terre</button>
     </div>
 </template>
 
