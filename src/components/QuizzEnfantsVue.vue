@@ -108,6 +108,33 @@ const reponseCarotte = () => {
 const reponsePommeDeTerre = () => {
    quatriemeReponseCultureg.value = "Une Pomme de terre";
 };
+
+const premiereReponseAnglais = ref("");
+const premierTableauAnglais = ref(["Dog","Turtle", "Horse"]);
+const reponseTurtle = () => {
+    premiereReponseAnglais.value = "Turtle";
+};
+const reponseDog = () => {
+    premiereReponseAnglais.value = "Dog";
+};
+
+const reponseHorse = () => {
+   premiereReponseAnglais.value = "Horse";
+};
+
+const deuxiemeReponseAnglais = ref("");
+const deuxiemeTableauAnglais = ref(["Manger","Au Revoir", "Bonjour"]);
+const reponseBonjour = () => {
+    deuxiemeReponseAnglais.value = "Bonjour";
+};
+const reponseAuRevoir = () => {
+   deuxiemeReponseAnglais.value = "Au Revoir";
+};
+
+const reponseManger = () => {
+   deuxiemeReponseAnglais.value = "Manger";
+};
+
 </script>
 
 <template>
@@ -172,6 +199,24 @@ const reponsePommeDeTerre = () => {
         <button @click="reponseCitrouille">Une Citrouille</button>
         <button @click="reponsePommeDeTerre">Une Pomme de terre</button>
     </div>
+    <div class="categories">
+        <h2>Anglais :</h2>
+        <p class="question">Comment on dit tortue en anglais ?</p>
+        <p class="resultat" :style="{color : premiereReponseAnglais === premierTableauAnglais[1] ? '#CC4949' : '#784040'}">Résultat : {{ premiereReponseAnglais }}</p>
+        <div v-show="premiereReponseAnglais === premierTableauAnglais[1]">Bravo tu as réussi la question!🎉</div>
+        <div v-show="premiereReponseAnglais === premierTableauAnglais[0] || premiereReponseAnglais === premierTableauAnglais[2]">Mauvaise réponse😉</div>
+        <button @click="reponseTurtle">Turtle</button>
+        <button @click="reponseDog">Dog</button>
+        <button @click="reponseHorse">Horse</button>
+
+        <p class="question">Qu'est ce que veut dire "Hello" ?</p>
+        <p class="resultat" :style="{color : deuxiemeReponseAnglais === deuxiemeTableauAnglais[2] ? '#CC4949' : '#784040'}">Résultat : {{ deuxiemeReponseAnglais }}</p>
+        <div v-show="deuxiemeReponseAnglais === deuxiemeTableauAnglais[2]">Bravo tu as réussi la question!🎉</div>
+        <div v-show="deuxiemeReponseAnglais === deuxiemeTableauAnglais[0] || deuxiemeReponseAnglais === deuxiemeTableauAnglais[1]">Mauvaise réponse😉</div>
+        <button @click="reponseManger">Manger</button>
+        <button @click="reponseAuRevoir">Au Revoir</button>
+        <button @click="reponseBonjour">Bonjour</button>
+    </div>
 </template>
 
 <style scoped>
@@ -183,6 +228,7 @@ const reponsePommeDeTerre = () => {
     }
     .categories {
         border : dashed #E0AA9F; 
+        border-width: 5px;
         margin : 20px 300px 10px 300px;
         text-align: center;
     }
@@ -204,5 +250,9 @@ const reponsePommeDeTerre = () => {
         font-family: cursive;
         font-weight: bold;
         border : dashed #E0AA9F;
+        border-width: 3.5px;
+    }
+    button:hover {
+        background-color: #E89484;
     }
 </style>
