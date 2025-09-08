@@ -153,6 +153,90 @@ const reponseManger = () => {
    deuxiemeReponseAnglais.value = "Manger";
 };
 
+const troisiemeReponseAnglais = ref("");
+const troisiemeTableauAnglais = ref(["Chat","Ordinateur", "Télévision"]);
+const reponseChatt = () => {
+    troisiemeReponseAnglais.value = "Chat";
+    score();
+};
+const reponseOrdi = () => {
+   troisiemeReponseAnglais.value = "Ordinateur";
+};
+
+const reponseTele = () => {
+   troisiemeReponseAnglais.value = "Télévision";
+};
+
+const quatriemeReponseAnglais = ref("");
+const quatriemeTableauAnglais = ref(["Burger","Pizza", "Bacon"]);
+const reponseBurger = () => {
+   quatriemeReponseAnglais.value = "Burger";
+    score();
+};
+const reponsePizza = () => {
+   quatriemeReponseAnglais.value = "Pizza";
+};
+
+const reponseBacon = () => {
+   quatriemeReponseAnglais.value = "Bacon";
+};
+
+const premiereReponseHistoire = ref("");
+const premierTableauHistoire = ref(["Jaune","Blanc", "Multicolor"]);
+const reponseBlanc = () => {
+   premiereReponseHistoire.value = "Blanc";
+    score();
+};
+const reponseJaune = () => {
+   premiereReponseHistoire.value = "Jaune";
+};
+
+const reponseMulticolor = () => {
+   premiereReponseHistoire.value = "Multicolor";
+};
+
+const deuxiemeReponseHistoire = ref("");
+const deuxiemeTableauHistoire = ref(["La prise de la Bastille","La fin de la première guerre mondiale", "La naissance de Jésus"]);
+const reponsePaix = () => {
+   deuxiemeReponseHistoire.value = "La fin de la première guerre mondiale";
+    score();
+};
+const reponseBastille = () => {
+   deuxiemeReponseHistoire.value = "La prise de la Bastille";
+};
+
+const reponseJesus = () => {
+  deuxiemeReponseHistoire.value = "La naissance de Jésus";
+};
+
+const troisiemeReponseHistoire = ref("");
+const troisiemeTableauHistoire = ref(["Les Germains","Les Gaulois", "Les Slaves de l'Est"]);
+const reponseGaulois = () => {
+   troisiemeReponseHistoire.value = "Les Gaulois";
+    score();
+};
+const reponseGermains = () => {
+   troisiemeReponseHistoire.value = "Les Germains";
+};
+
+const reponseEst = () => {
+  troisiemeReponseHistoire.value = "Les Slaves de l'Est";
+};
+
+const quatriemeReponseHistoire = ref("");
+const quatriemeTableauHistoire = ref(["Noir, Rouge, Jaune","Bleu, Blanc, Rouge", "Vert, Blanc, Rouge"]);
+const reponseBleu = () => {
+   quatriemeReponseHistoire.value = "Bleu, Blanc, Rouge";
+    score();
+};
+const reponseNoir = () => {
+   quatriemeReponseHistoire.value = "Noir, Rouge, Jaune";
+};
+
+const reponseVert = () => {
+  quatriemeReponseHistoire.value = "Vert, Blanc, Rouge";
+};
+
 const scores = ref(0);
 const score = () => {
     scores.value++
@@ -240,6 +324,56 @@ const score = () => {
         <button @click="reponseManger">Manger</button>
         <button @click="reponseAuRevoir">Au Revoir</button>
         <button @click="reponseBonjour">Bonjour</button>
+        
+        <p class="question">Qu'est ce que veut dire "Cat" ?</p>
+        <p class="resultat" :style="{color : troisiemeReponseAnglais === troisiemeTableauAnglais[0] ? '#CC4949' : '#784040'}">Résultat : {{ troisiemeReponseAnglais }}</p>
+        <div v-show="troisiemeReponseAnglais === troisiemeTableauAnglais[0]">Bravo tu as réussi la question!🎉</div>
+        <div v-show="troisiemeReponseAnglais === troisiemeTableauAnglais[1] || troisiemeReponseAnglais === troisiemeTableauAnglais[2]">Mauvaise réponse😉</div>
+        <button @click="reponseTele">Télévision</button>
+        <button @click="reponseChatt">Chat</button>
+        <button @click="reponseOrdi">Ordinateur</button>
+
+        <p class="question">Comment on dit burger en anglais ?</p>
+        <p class="resultat" :style="{color : quatriemeReponseAnglais === quatriemeTableauAnglais[0] ? '#CC4949' : '#784040'}">Résultat : {{ quatriemeReponseAnglais }}</p>
+        <div v-show="quatriemeReponseAnglais === quatriemeTableauAnglais[0]">Bravo tu as réussi la question!🎉</div>
+        <div v-show="quatriemeReponseAnglais === quatriemeTableauAnglais[1] || quatriemeReponseAnglais === quatriemeTableauAnglais[2]">Mauvaise réponse😉</div>
+        <button @click="reponseBurger">Burger</button>
+        <button @click="reponsePizza">Pizza</button>
+        <button @click="reponseBacon">Bacon</button>
+    </div>
+    <div class="categories">
+        <h2>Histoire :</h2>
+        <p class="question">De quel couleur était le cheval blanc d'Henri IV ?</p>
+        <p class="resultat" :style="{color : premiereReponseHistoire === premierTableauHistoire[1] ? '#CC4949' : '#784040'}">Résultat : {{ premiereReponseHistoire }}</p>
+        <div v-show="premiereReponseHistoire === premierTableauHistoire[1]">Bravo tu as réussi la question!🎉</div>
+        <div v-show="premiereReponseHistoire === premierTableauHistoire[0] || premiereReponseHistoire === premierTableauHistoire[2]">Mauvaise réponse😉</div>
+        <button @click="reponseJaune">Jaune</button>
+        <button @click="reponseBlanc">Blanc</button>
+        <button @click="reponseMulticolor">Multicolor</button>
+
+        <p class="question">Que célèbre-t-on le 11 Novembre ?</p>
+        <p class="resultat" :style="{color : deuxiemeReponseHistoire === deuxiemeTableauHistoire[1] ? '#CC4949' : '#784040'}">Résultat : {{ deuxiemeReponseHistoire }}</p>
+        <div v-show="deuxiemeReponseHistoire === deuxiemeTableauHistoire[1]">Bravo tu as réussi la question!🎉</div>
+        <div v-show="deuxiemeReponseHistoire === deuxiemeTableauHistoire[0] || deuxiemeReponseHistoire === deuxiemeTableauHistoire[2]">Mauvaise réponse😉</div>
+        <button @click="reponseBastille">La prise de la Bastille</button>
+        <button @click="reponsePaix">La fin de la première guerre mondiale</button>
+        <button @click="reponseJesus">La naissance de Jésus</button>
+
+        <p class="question">Comment s'appelle la population de la Gaule ?</p>
+        <p class="resultat" :style="{color : troisiemeReponseHistoire === troisiemeTableauHistoire[1] ? '#CC4949' : '#784040'}">Résultat : {{ troisiemeReponseHistoire }}</p>
+        <div v-show="troisiemeReponseHistoire === troisiemeTableauHistoire[1]">Bravo tu as réussi la question!🎉</div>
+        <div v-show="troisiemeReponseHistoire === troisiemeTableauHistoire[0] || troisiemeReponseHistoire === troisiemeTableauHistoire[2]">Mauvaise réponse😉</div>
+        <button @click="reponseGaulois">Les Gaulois</button>
+        <button @click="reponseGermains">Les Germains</button>
+        <button @click="reponseEst">Les Slaves de l'Est</button>
+
+        <p class="question">Quelles sont les couleurs du drapeau ?</p>
+        <p class="resultat" :style="{color : quatriemeReponseHistoire === quatriemeTableauHistoire[1] ? '#CC4949' : '#784040'}">Résultat : {{ quatriemeReponseHistoire }}</p>
+        <div v-show="quatriemeReponseHistoire === quatriemeTableauHistoire[1]">Bravo tu as réussi la question!🎉</div>
+        <div v-show="quatriemeReponseHistoire === quatriemeTableauHistoire[0] || quatriemeReponseHistoire === quatriemeTableauHistoire[2]">Mauvaise réponse😉</div>
+        <button @click="reponseNoir">Noir, Rouge, Jaune</button>
+        <button @click="reponseVert">Vert, Blanc, Rouge</button>
+        <button @click="reponseBleu">Bleu, Blanc, Rouge</button>
     </div>
 </template>
 
